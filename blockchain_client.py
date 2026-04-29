@@ -57,14 +57,14 @@ def new_wallet():
     private_key = RSA.generate(1024, random_gen)
     public_key = private_key.publickey()
     response = {
-        'private_key': binascii.hexlify(private_key.exportKey(formate='DER')).decode('ascii'),
-        'public_key': binascii.hexlify(public_key.exportKey(formate='DER')).decode('ascii')
+        'private_key': binascii.hexlify(private_key.exportKey(format='DER')).decode('ascii'),
+        'public_key': binascii.hexlify(public_key.exportKey(format='DER')).decode('ascii')
     }
 
     return jsonify(response), 200
 
 @app.route('/generate/transaction', methods=['POST'])
-def genereate_transaction():
+def generate_transaction():
     sender_address = request.form['sender_address']
     sender_private_key = request.form['sender_private_key']
     recipient_address = request.form['recipient_address']
